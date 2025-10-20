@@ -1,7 +1,10 @@
+// TopNavBar.cs
+
 using UnityEngine;
 using RounRounGrowth.Core;
 using RounRounGrowth.Building;
 using TMPro;
+using UnityEngine.UI;
 
 namespace RounRounGrowth.UI
 {
@@ -11,7 +14,7 @@ namespace RounRounGrowth.UI
         [SerializeField] private GameObject _buttonPrefab;
         [SerializeField] private BuildingNavigator _navigator;
         private FloorId _lastFloor;
-        private bool _hasGenerated => _lastFloor != default;
+        private bool _hasGenerated = false;
 
         private void OnEnable()
         {
@@ -37,13 +40,16 @@ namespace RounRounGrowth.UI
 
         private void HandleRoomChanged(CurrentLocation currentLocation)
         {
-            if (_lastFloor == currentLocation.Floor && _hasGenerated == true)
+            HighlightCurrentRoom(currentLocation.Room); // 同楼层时，更新高亮
+            if (_lastFloor == currentLocation.Floor && _hasGenerated == true) // 如果在同楼层且此前已生成按钮，则不重新生成按钮
                 return;
-            _lastFloor = currentLocation.Floor;
+            _lastFloor = currentLocation.Floor; // 如果楼层变化，则重新生成对应楼层的按钮，并高亮当前房间
             GenerateButtons(currentLocation.Floor);
+            HighlightCurrentRoom(currentLocation.Room);
+            _hasGenerated = true;
         }
 
-        public void GenerateButtons(FloorId floor)
+        public void GenerateButtons(FloorId floor) 
         {
             foreach (Transform child in _container)
                 Destroy(child.gameObject); // 清除所有导航栏内的按钮
@@ -51,10 +57,18 @@ namespace RounRounGrowth.UI
             foreach (var room in rooms)
             {
                 var button = Instantiate(_buttonPrefab, _container);
-                var text = button.GetComponentInChildren<TMP_Text>();
-                text.text = room.ToString();
+                var topNavButton = button.GetComponent<TopNavButton>();
+                topNavButton.Initialize(room, room.ToString());
+            }
+        }
+
+        private void HighlightCurrentRoom(RoomId currentRoom)
+        {
+            foreach (Transform child in _container)
+            {
+                var topNavButton = child.GetComponent<TopNavButton>();
+                topNavButton.SetHighlight(topNavButton.RoomId == currentRoom);
             }
         }
     }
-
 }
