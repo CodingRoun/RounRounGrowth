@@ -10,6 +10,8 @@ namespace RounRounGrowth.UI
         [SerializeField] private Transform _container;
         [SerializeField] private GameObject _buttonPrefab;
         [SerializeField] private BuildingNavigator _navigator;
+        private FloorId _lastFloor;
+        private bool _hasGenerated => _lastFloor != default;
 
         private void OnEnable()
         {
@@ -35,7 +37,10 @@ namespace RounRounGrowth.UI
 
         private void HandleRoomChanged(CurrentLocation currentLocation)
         {
-            Debug.Log($"[TopNavBar] 当前房间为：{currentLocation.Floor}/{currentLocation.Room}");
+            if (_lastFloor == currentLocation.Floor && _hasGenerated == true)
+                return;
+            _lastFloor = currentLocation.Floor;
+            GenerateButtons(currentLocation.Floor);
         }
 
         public void GenerateButtons(FloorId floor)
@@ -49,7 +54,6 @@ namespace RounRounGrowth.UI
                 var text = button.GetComponentInChildren<TMP_Text>();
                 text.text = room.ToString();
             }
-            Debug.Log($"[TopNavBar] 已生成 {_container.childCount} 个按钮");
         }
     }
 
