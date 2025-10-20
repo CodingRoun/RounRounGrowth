@@ -1,5 +1,5 @@
 # ============================================
-# RounRoun Growth Commit Message Template v2.1
+# RounRoun Growth Commit Message Template
 # ============================================
 #
 # <type>: [Mx-y] 标题（番茄#n）
@@ -20,37 +20,38 @@
 # - 关键资源路径；
 # - 修改说明与视觉验证。
 #
+# 文档（可选）：
+# - 更新、修改文档。
+#
 # --------------------------------------------
 # 类型说明（type）：
 # --------------------------------------------
-# feat:     新功能（Feature）
-# fix:      修复（Bug Fix）
-# refactor: 重构（Refactor）
-# chore:    杂项（Chore）
-# style:    样式（Style）
-# docs:     文档（Docs）
-# test:     测试（Test）
+# feat:     新功能（Feature）—— 实现一个番茄任务的功能代码
+# fix:      修复（Bug Fix）—— 修复错误或异常行为
+# refactor: 重构（Refactor）—— 改进代码结构，不改变功能
+# chore:    杂项（Chore）—— 重命名、注释、配置、日志
+# style:    样式（Style）—— UI或排版调整，不涉及逻辑
+# docs:     文档（Docs）—— 注释、字典卡、文档更新
+# test:     测试（Test）—— 测试逻辑或验证脚本
 #
 # --------------------------------------------
 # 示例：
 # --------------------------------------------
-
-# feat: [M0-6] TopNavBar 按钮生成逻辑完善（番茄#4→5）
+#
+# feat: [M0-5] 实现 SwipeToNavigate 页面切换（番茄#6）
 #
 # 代码：
-# - 实现 TopNavBar 自动生成房间按钮；
-# - 使用 _lastFloor 与 _hasGenerated 避免重复生成；
-# - 保持事件注册与注销一致；
+# - 将 PageSwipeDetector 的 OnSwipe 事件与导航器绑定；
+# - 实现左右滑动页面切换；
+# - 支持边界 return。
 #
-# Unity：
-# - 创建 Prefab：Assets/Prefabs/UI/TopNavButton.prefab；
-# - 绑定 TopNavBar._container / _buttonPrefab / _navigator；
-# - 验证生成与布局渲染正常。
+# fix: [M0-5] 修复边界滑动不触发提示的逻辑（番茄#8）
 #
-# 美术：
-# - 暂无。
+# - 调整 BuildingNavigationTable.GetNextRoomId 的边界判断。
 #
-# --------------------------------------------
+# chore: [M0-5→6] 日终提交
+#
+# -------------------------------------------- 
 # 提交规范：
 # 1. 每次提交描述一个番茄的完整工作。
 # 2. 无对应内容可省略该段落标题。
