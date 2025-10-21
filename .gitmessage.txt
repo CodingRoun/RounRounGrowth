@@ -2,7 +2,7 @@
 # RounRoun Growth Commit Message Template
 # ============================================
 #
-# <type>: [Mx-y] 标题（番茄#n）
+# <type>: [Mx-y] 标题（番茄#起→止）
 #
 # 代码（可选）：
 # - 具体逻辑改动；
@@ -45,7 +45,7 @@
 # - 实现左右滑动页面切换；
 # - 支持边界 return。
 #
-# fix: [M0-5] 修复边界滑动不触发提示的逻辑（番茄#8）
+# fix: [M0-5] 修复边界滑动不触发提示的逻辑（番茄#8→9）
 #
 # - 调整 BuildingNavigationTable.GetNextRoomId 的边界判断。
 #

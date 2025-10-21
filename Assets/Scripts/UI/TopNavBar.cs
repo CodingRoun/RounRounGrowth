@@ -56,9 +56,9 @@ namespace RounRounGrowth.UI
             var rooms = BuildingNavigationTable.GetRooms(floor); //获得同层所有房间IReadOnlyList<RoomId>
             foreach (var room in rooms)
             {
-                var button = Instantiate(_buttonPrefab, _container);
+                var button = Instantiate(_buttonPrefab, _container); 
                 var topNavButton = button.GetComponent<TopNavButton>();
-                topNavButton.Initialize(room, room.ToString());
+                topNavButton.Initialize(room, room.ToString(), _navigator);
             }
         }
 

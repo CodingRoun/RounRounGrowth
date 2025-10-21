@@ -17,7 +17,7 @@
   [✓] M0-3 实现房间导航系统
   [✓] M0-4 Map 手势与房间选择
   [✓] M0-5 同层左右滑
-  [ ] M0-6 顶部导航条
+  [✓] M0-6 顶部导航条
   [ ] M0-7 楼层电梯
 
 -------------------------------------------
@@ -27,11 +27,12 @@ M0-6 顶部导航条（TopNavBar）
 任务目标：
   [✓] 动态生成当前楼层的房间标题
   [✓] 当前房间标题高亮
-  [ ] 点击标题切换房间
+  [✓] 点击标题切换房间
   [-] 长按导航条打开 Map（推迟到M3）
 
 主要文件：
   - TopNavBar.cs
+  - TopNavButton.cs
   - BuildingNavigator.cs
   - BuildingNavigationTable.cs
 
@@ -60,6 +61,8 @@ M0-6 顶部导航条（TopNavBar）
 - MapGestureSimulator.cs
 - PageSwipeDetector.cs
 - SwipeToNavigate.cs
+- TopNavBar.cs
+- TopNavButton.cs
 -------------------------------------------
 
 备注：
