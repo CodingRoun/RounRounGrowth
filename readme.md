@@ -30,7 +30,7 @@
 - [x] 房间导航系统（`BuildingNavigator`）  
 - [x] Map 手势与房间选择（`MapGestureSimulator` + `MapRoomButton`）  
 - [x] 同层左右滑（`PageSwipeDetector` + `SwipeToNavigate`）  
-- [ ] 顶部导航条点击跳转（`TopNavBar`）  
+- [x] 顶部导航条点击跳转（`TopNavBar`）  
 - [ ] 楼层电梯面板（`Elevator Selector`）  
 
 ---
