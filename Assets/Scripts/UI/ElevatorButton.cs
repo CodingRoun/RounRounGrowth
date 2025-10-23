@@ -6,13 +6,13 @@ namespace RounRounGrowth.UI
 {
     public class ElevatorButton : MonoBehaviour
     {
-        [SerializeField] private ElevatorPanel _elevatorPanel;
+        [SerializeField] private ElevatorOverlay _elevatorOverlay;
 
         public void OnClick()
         {
-            if (_elevatorPanel == null)
+            if (_elevatorOverlay == null)
             {
-                Debug.LogWarning("[ElevatorButton] Î´°ó¶¨ElevatorPanel");
+                Debug.LogWarning("[ElevatorButton] Î´°ó¶¨ElevatorOverlay");
                 return;
             }
             
@@ -21,8 +21,11 @@ namespace RounRounGrowth.UI
 
         private void TogglePanel()
         {
-            bool isPanelShown = _elevatorPanel.gameObject.activeSelf;
-            _elevatorPanel.gameObject.SetActive(!isPanelShown);
+            bool isOverlayActive = _elevatorOverlay.gameObject.activeSelf;
+            if (isOverlayActive)
+                _elevatorOverlay.Hide();
+            else
+                _elevatorOverlay.Show();
         }
     }
 }

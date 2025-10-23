@@ -1,3 +1,5 @@
+// PageSwipeDetector.cs
+
 using UnityEngine;
 using UnityEngine.EventSystems;
 
