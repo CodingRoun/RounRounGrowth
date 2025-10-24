@@ -1,5 +1,7 @@
 // ElevatorOverlay.cs
 
+using RounRounGrowth.Building;
+using RounRounGrowth.Core;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -8,13 +10,46 @@ namespace RounRounGrowth.UI
     public class ElevatorOverlay : MonoBehaviour, IPointerClickHandler
     {
         [SerializeField] private RectTransform _elevatorPanel;
+        [SerializeField] private BuildingNavigator _navigator;
+        [SerializeField] private FloorButtonRef[] _floorButtonRefs;
+
+        [System.Serializable]
+        public class FloorButtonRef
+        {
+            public FloorId Floor;
+            public Button Button;
+        }
 
         private void Awake()
         {
             gameObject.SetActive(false);
         }
 
-        public void OnPointerClick(PointerEventData eventData)
+        private void OnEnable()
+        {
+            SetHighlight(_navigator.Current); // 因为广播时处于隐藏状态，无法订阅事件，所以主动获取当前位置
+        }
+
+        private void SetHighlight(CurrentLocation currentLocation)
+        {
+            if (_floorButtonRefs == null || _floorButtonRefs.Length == 0)
+            {
+                Debug.LogWarning("[ElevatorOverlay] 未绑定楼层按钮引用");
+                return;
+            }
+            foreach (var refData in _floorButtonRefs)
+            {
+                if (refData == null || refData.Button == null)
+                {
+                    Debug.LogWarning("[ElevatorOverlay] 某个 FloorButtonRef 未绑定");
+                    continue;
+                }
+                bool isCurrentFloor = refData.Floor == currentLocation.Floor;
+                refData.Button.image.color = isCurrentFloor ? new Color(1f, 0.95f, 0.6f) : Color.white;
+            }
+        }
+
+        public void OnPointerClick(PointerEventData eventData) // 如点击在ElevatorPanel外，则关闭ElevatorOverlay
         {
             if (_elevatorPanel == null)
             {

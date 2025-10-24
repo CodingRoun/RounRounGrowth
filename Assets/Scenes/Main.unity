@@ -2231,6 +2231,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _elevatorPanel: {fileID: 1763644476}
+  _navigator: {fileID: 1794630927}
+  _floorButtonRefs:
+  - Floor: 0
+    Button: {fileID: 1371975026}
+  - Floor: 1
+    Button: {fileID: 621404822}
+  - Floor: 2
+    Button: {fileID: 2098258198}
+  - Floor: 3
+    Button: {fileID: 367652065}
 --- !u!222 &441911251
 CanvasRenderer:
   m_ObjectHideFlags: 0
