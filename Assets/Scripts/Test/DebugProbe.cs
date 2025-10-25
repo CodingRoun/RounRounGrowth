@@ -1,4 +1,4 @@
-using RounRounGrowth.Core;
+﻿using RounRounGrowth.Core;
 using UnityEngine;
 
 public class DebugProbe : MonoBehaviour
@@ -12,3 +12,4 @@ public class DebugProbe : MonoBehaviour
         Debug.Log(next);
     }
 }
+

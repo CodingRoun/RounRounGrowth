@@ -1,4 +1,4 @@
-using RounRounGrowth.Building;
+ï»¿using RounRounGrowth.Building;
 using RounRounGrowth.Core;
 using UnityEngine;
 
@@ -17,7 +17,7 @@ namespace RounRounGrowth.UI
             var nextRoom = BuildingNavigationTable.GetNextRoomId(current.Floor, current.Room, dir);
             if (nextRoom == null)
             {
-                Debug.Log("ÒÑµ½±ß½ç£¬ÎÞ·¨¼ÌÐø»¬¶¯");
+                Debug.Log("å·²åˆ°è¾¹ç•Œï¼Œæ— æ³•ç»§ç»­æ»‘åŠ¨");
                 return;
             }
             _navigator.Show(current.Floor, nextRoom.Value); 
@@ -25,3 +25,4 @@ namespace RounRounGrowth.UI
     }
 
 }
+

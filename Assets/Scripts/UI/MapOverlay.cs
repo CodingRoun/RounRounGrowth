@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 namespace RounRounGrowth.UI
 {
     public class MapOverlay : MonoBehaviour
@@ -9,7 +9,7 @@ namespace RounRounGrowth.UI
         {
             if (_floatingUI == null)
             {
-                Debug.LogWarning("[MapOverlay] δ�� FloatingUI");
+                Debug.LogWarning("[MapOverlay] 未绑定 FloatingUI");
                 return;
             }
             _floatingUI.SetActive(false);
@@ -18,11 +18,12 @@ namespace RounRounGrowth.UI
         {
             if (_floatingUI == null)
             {
-                Debug.LogWarning("[MapOverlay] δ�� FloatingUI");
+                Debug.LogWarning("[MapOverlay] 未绑定 FloatingUI");
                 return;
             }
             _floatingUI.SetActive(true);
         }
     }
 }
+
 
