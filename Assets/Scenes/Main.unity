@@ -2241,6 +2241,7 @@ MonoBehaviour:
     Button: {fileID: 2098258198}
   - Floor: 3
     Button: {fileID: 367652065}
+  _mapOverlay: {fileID: 998601659}
 --- !u!222 &441911251
 CanvasRenderer:
   m_ObjectHideFlags: 0

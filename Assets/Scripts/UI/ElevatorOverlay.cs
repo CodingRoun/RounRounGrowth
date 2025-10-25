@@ -12,6 +12,8 @@ namespace RounRounGrowth.UI
         [SerializeField] private RectTransform _elevatorPanel;
         [SerializeField] private BuildingNavigator _navigator;
         [SerializeField] private FloorButtonRef[] _floorButtonRefs;
+        [SerializeField] private MapOverlay _mapOverlay;
+        private bool _wasMapOpen;
 
         [System.Serializable]
         public class FloorButtonRef
@@ -49,6 +51,22 @@ namespace RounRounGrowth.UI
             }
         }
 
+        private void Update()
+        {
+            if (_mapOverlay == null)
+            {
+                Debug.LogWarning("[ElevatorOverlay] 未绑定 MapOverlay");
+                return;
+            }
+            bool isMapOpen = _mapOverlay.gameObject.activeSelf;
+            if (isMapOpen && !_wasMapOpen)
+            {
+                Debug.Log("[ElevatorOverlay] 检测到地图打开，关闭电梯面板");
+                Hide();
+            }
+            _wasMapOpen = isMapOpen;
+                
+        }
         private void SetHighlight(CurrentLocation currentLocation, FloorButtonRef floorButtonRef)
         {
             bool isCurrentFloor = floorButtonRef.Floor == currentLocation.Floor;
