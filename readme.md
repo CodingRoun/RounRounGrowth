@@ -1,7 +1,8 @@
 # 🏢 RounRoun Growth  
 > 「圆肚成长计划」—— 一款融合时间管理、情绪追踪与奖励机制的互动应用  
 
-![Unity](https://img.shields.io/badge/Engine-Unity%202021.3+-blue)
+![Unity](https://img.shields.io/badge/Engine-Unity%206.0%20(6000.0.49f1)-blue)
+![.NET](https://img.shields.io/badge/.NET-Standard%202.1-512BD4)
 ![C#](https://img.shields.io/badge/Language-C%23-178600)
 ![Progress](https://img.shields.io/badge/Phase-M0%20导航系统基础-yellow)
 ![License](https://img.shields.io/badge/License-MIT-green)
@@ -41,20 +42,24 @@
 RounRounGrowth/
 │
 ├── Core/
-│   ├── BuildingTypes.cs            # 枚举与位置结构定义
-│   └── BuildingNavigationTable.cs  # 楼层与房间映射表
+│   ├── BuildingTypes.cs              # 枚举与位置结构定义
+│   └── BuildingNavigationTable.cs    # 楼层与房间映射表
 │
 ├── Building/
-│   ├── BuildingManager.cs          # 面板实例管理
-│   └── BuildingNavigator.cs        # 导航控制与事件分发
+│   ├── BuildingManager.cs            # 面板实例管理
+│   └── BuildingNavigator.cs          # 楼层与房间导航控制
 │
 └── UI/
-    ├── PageSwipeDetector.cs        # 滑动检测
-    ├── SwipeToNavigate.cs          # 滑动换房间逻辑
-    ├── MapRoomButton.cs            # Map房间按钮
-    ├── MapGestureSimulator.cs      # Ctrl+M 打开Map模拟
-    ├── TopNavBar.cs                # 顶部导航条生成
-    └── TopNavButton.cs             # 房间标题按钮与高亮
+    ├── PageSwipeDetector.cs          # 滑动检测（左右换页）
+    ├── SwipeToNavigate.cs            # 滑动换房间逻辑
+    ├── MapRoomButton.cs              # Map房间按钮（点击跳转）
+    ├── MapGestureSimulator.cs        # Ctrl+M 打开Map模拟
+    ├── MapOverlay.cs                 # 打开Map时隐藏浮动UI
+    ├── TopNavBar.cs                  # 顶部导航条生成与高亮
+    ├── TopNavButton.cs               # 顶部按钮实例与选中状态
+    ├── ElevatorButton.cs             # 打开/关闭电梯面板按钮
+    ├── ElevatorOverlay.cs            # 楼层切换菜单与事件分发
+    └── ElevatorFloorButton.cs        # 单个楼层按钮（点击跳转 + 高亮状态）
 ```
 
 ---
@@ -72,8 +77,8 @@ RounRounGrowth/
 
 | 项目 | 版本 |
 |------|------|
-| Unity | 2021.3+ |
-| .NET | 4.x |
+| Unity | 6.0 (6000.0.49f1) |
+| .NET  | .NET Standard 2.1 |
 | IDE | Visual Studio / Rider |
 | 平台 | Windows / macOS / Android / iOS |
 

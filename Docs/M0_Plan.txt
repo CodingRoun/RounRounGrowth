@@ -58,8 +58,15 @@ M0-6 顶部导航条（TopNavBar）
   [✓] M0-7-5 加入关闭条件（外部与Map交互）  
       - 打开地图时自动关闭电梯面板。
 
+  [ ] M0-7-6 楼层电梯结构优化（Refactor）
+      - 将 ElevatorOverlay 中的按钮点击与高亮逻辑迁移至新组件 ElevatorFloorButton；
+      - ElevatorOverlay 仅负责整体面板的开关与地图联动；
+      - 每个 ElevatorFloorButton 自行处理点击事件与高亮更新；
+      - 无新增动画与音效，专注结构解耦与可维护性。
+
 主要文件：
   - ElevatorOverlay.cs
+  - ElevatorFloorButton.cs
   - ElevatorButton.cs
   - BuildingNavigator.cs
   - BuildingNavigationTable.cs
@@ -75,6 +82,9 @@ M0-6 顶部导航条（TopNavBar）
 - SwipeToNavigate.cs
 - TopNavBar.cs
 - TopNavButton.cs
+- ElevatorOverlay.cs
+- ElevatorFloorButton.cs
+- ElevatorButton.cs
 -------------------------------------------
 
 备注：
