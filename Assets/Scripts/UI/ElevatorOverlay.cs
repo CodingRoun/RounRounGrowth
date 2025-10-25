@@ -32,32 +32,42 @@ namespace RounRounGrowth.UI
                 Debug.LogWarning("[ElevatorOverlay] 未绑定楼层按钮引用");
                 return;
             }
-            foreach (var refData in _floorButtonRefs)
+            foreach (var floorButtonRef in _floorButtonRefs)
             {
-                if (refData == null || refData.Button == null)
+                if (floorButtonRef == null || floorButtonRef.Button == null)
                 {
                     Debug.LogWarning("[ElevatorOverlay] 某个 FloorButtonRef 未绑定");
                     continue;
                 }
 
-                refData.Button.onClick.RemoveAllListeners(); // 防止重复绑定
-                refData.Button.onClick.AddListener(() =>
+                floorButtonRef.Button.onClick.RemoveAllListeners(); // 防止重复绑定
+                floorButtonRef.Button.onClick.AddListener(() =>
                 {
-                    OnFloorButtonClicked(refData.Floor);
+                    OnFloorButtonClicked(floorButtonRef.Floor);
                 });
-                SetHighlight(_navigator.Current, refData); // 因为广播时处于隐藏状态，无法订阅事件，所以主动获取当前位置
+                SetHighlight(_navigator.Current, floorButtonRef); // 因为广播时处于隐藏状态，无法订阅事件，所以主动获取当前位置
             }
         }
 
-        private void SetHighlight(CurrentLocation currentLocation, FloorButtonRef refData)
+        private void SetHighlight(CurrentLocation currentLocation, FloorButtonRef floorButtonRef)
         {
-            bool isCurrentFloor = refData.Floor == currentLocation.Floor;
-            refData.Button.image.color = isCurrentFloor ? new Color(1f, 0.95f, 0.6f) : Color.white;
+            bool isCurrentFloor = floorButtonRef.Floor == currentLocation.Floor;
+            floorButtonRef.Button.image.color = isCurrentFloor ? new Color(1f, 0.95f, 0.6f) : Color.white;
         }
 
-        private void OnFloorButtonClicked(FloorId floor)
+        private void OnFloorButtonClicked(FloorId targetFloor)
         {
-            Debug.Log($"点击了楼层按钮：{floor}");
+            if (_navigator == null)
+            {
+                Debug.LogWarning("[ElevatorOverlay] 未绑定 BuildingNavigator");
+                return;
+            }
+            if (targetFloor == _navigator.Current.Floor) // 这里又没使用订阅获取，什么时候使用订阅，什么时候主动获取？
+                return;
+            RoomId defaultRoom = BuildingNavigationTable.GetDefaultRoom(targetFloor);
+            _navigator.Show(targetFloor, defaultRoom);
+            Hide();
+            Debug.Log($"已切换至楼层 {targetFloor} 的默认房间: {defaultRoom}");
         }
 
         public void OnPointerClick(PointerEventData eventData) // 如点击在ElevatorPanel外，则关闭ElevatorOverlay
