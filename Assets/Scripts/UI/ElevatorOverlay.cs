@@ -27,11 +27,6 @@ namespace RounRounGrowth.UI
 
         private void OnEnable()
         {
-            SetHighlight(_navigator.Current); // 因为广播时处于隐藏状态，无法订阅事件，所以主动获取当前位置
-        }
-
-        private void SetHighlight(CurrentLocation currentLocation)
-        {
             if (_floorButtonRefs == null || _floorButtonRefs.Length == 0)
             {
                 Debug.LogWarning("[ElevatorOverlay] 未绑定楼层按钮引用");
@@ -44,9 +39,25 @@ namespace RounRounGrowth.UI
                     Debug.LogWarning("[ElevatorOverlay] 某个 FloorButtonRef 未绑定");
                     continue;
                 }
-                bool isCurrentFloor = refData.Floor == currentLocation.Floor;
-                refData.Button.image.color = isCurrentFloor ? new Color(1f, 0.95f, 0.6f) : Color.white;
+
+                refData.Button.onClick.RemoveAllListeners(); // 防止重复绑定
+                refData.Button.onClick.AddListener(() =>
+                {
+                    OnFloorButtonClicked(refData.Floor);
+                });
+                SetHighlight(_navigator.Current, refData); // 因为广播时处于隐藏状态，无法订阅事件，所以主动获取当前位置
             }
+        }
+
+        private void SetHighlight(CurrentLocation currentLocation, FloorButtonRef refData)
+        {
+            bool isCurrentFloor = refData.Floor == currentLocation.Floor;
+            refData.Button.image.color = isCurrentFloor ? new Color(1f, 0.95f, 0.6f) : Color.white;
+        }
+
+        private void OnFloorButtonClicked(FloorId floor)
+        {
+            Debug.Log($"点击了楼层按钮：{floor}");
         }
 
         public void OnPointerClick(PointerEventData eventData) // 如点击在ElevatorPanel外，则关闭ElevatorOverlay
@@ -57,7 +68,7 @@ namespace RounRounGrowth.UI
                 return;
             }
             bool isClickOutsidePanel = !RectTransformUtility.RectangleContainsScreenPoint(
-                _elevatorPanel, 
+                _elevatorPanel,
                 eventData.position
                 );
             bool isPanelShown = gameObject.activeSelf;
