@@ -1,4 +1,4 @@
-// ElevatorOverlay.cs
+ï»¿// ElevatorOverlay.cs
 
 using RounRounGrowth.Building;
 using RounRounGrowth.Core;
@@ -31,23 +31,23 @@ namespace RounRounGrowth.UI
         {
             if (_floorButtonRefs == null || _floorButtonRefs.Length == 0)
             {
-                Debug.LogWarning("[ElevatorOverlay] Î´°ó¶¨Â¥²ã°´Å¥ÒıÓÃ");
+                Debug.LogWarning("[ElevatorOverlay] æœªç»‘å®šæ¥¼å±‚æŒ‰é’®å¼•ç”¨");
                 return;
             }
             foreach (var floorButtonRef in _floorButtonRefs)
             {
                 if (floorButtonRef == null || floorButtonRef.Button == null)
                 {
-                    Debug.LogWarning("[ElevatorOverlay] Ä³¸ö FloorButtonRef Î´°ó¶¨");
+                    Debug.LogWarning("[ElevatorOverlay] æŸä¸ª FloorButtonRef æœªç»‘å®š");
                     continue;
                 }
 
-                floorButtonRef.Button.onClick.RemoveAllListeners(); // ·ÀÖ¹ÖØ¸´°ó¶¨
+                floorButtonRef.Button.onClick.RemoveAllListeners(); // é˜²æ­¢é‡å¤ç»‘å®š
                 floorButtonRef.Button.onClick.AddListener(() =>
                 {
                     OnFloorButtonClicked(floorButtonRef.Floor);
                 });
-                SetHighlight(_navigator.Current, floorButtonRef); // ÒòÎª¹ã²¥Ê±´¦ÓÚÒş²Ø×´Ì¬£¬ÎŞ·¨¶©ÔÄÊÂ¼ş£¬ËùÒÔÖ÷¶¯»ñÈ¡µ±Ç°Î»ÖÃ
+                SetHighlight(_navigator.Current, floorButtonRef); // å› ä¸ºå¹¿æ’­æ—¶å¤„äºéšè—çŠ¶æ€ï¼Œæ— æ³•è®¢é˜…äº‹ä»¶ï¼Œæ‰€ä»¥ä¸»åŠ¨è·å–å½“å‰ä½ç½®
             }
         }
 
@@ -55,13 +55,13 @@ namespace RounRounGrowth.UI
         {
             if (_mapOverlay == null)
             {
-                Debug.LogWarning("[ElevatorOverlay] Î´°ó¶¨ MapOverlay");
+                Debug.LogWarning("[ElevatorOverlay] æœªç»‘å®š MapOverlay");
                 return;
             }
             bool isMapOpen = _mapOverlay.gameObject.activeSelf;
             if (isMapOpen && !_wasMapOpen)
             {
-                Debug.Log("[ElevatorOverlay] ¼ì²âµ½µØÍ¼´ò¿ª£¬¹Ø±ÕµçÌİÃæ°å");
+                Debug.Log("[ElevatorOverlay] æ£€æµ‹åˆ°åœ°å›¾æ‰“å¼€ï¼Œå…³é—­ç”µæ¢¯é¢æ¿");
                 Hide();
             }
             _wasMapOpen = isMapOpen;
@@ -77,22 +77,22 @@ namespace RounRounGrowth.UI
         {
             if (_navigator == null)
             {
-                Debug.LogWarning("[ElevatorOverlay] Î´°ó¶¨ BuildingNavigator");
+                Debug.LogWarning("[ElevatorOverlay] æœªç»‘å®š BuildingNavigator");
                 return;
             }
-            if (targetFloor == _navigator.Current.Floor) // ÕâÀïÓÖÃ»Ê¹ÓÃ¶©ÔÄ»ñÈ¡£¬Ê²Ã´Ê±ºòÊ¹ÓÃ¶©ÔÄ£¬Ê²Ã´Ê±ºòÖ÷¶¯»ñÈ¡£¿
+            if (targetFloor == _navigator.Current.Floor) 
                 return;
             RoomId defaultRoom = BuildingNavigationTable.GetDefaultRoom(targetFloor);
             _navigator.Show(targetFloor, defaultRoom);
             Hide();
-            Debug.Log($"ÒÑÇĞ»»ÖÁÂ¥²ã {targetFloor} µÄÄ¬ÈÏ·¿¼ä: {defaultRoom}");
+            Debug.Log($"å·²åˆ‡æ¢è‡³æ¥¼å±‚ {targetFloor} çš„é»˜è®¤æˆ¿é—´: {defaultRoom}");
         }
 
-        public void OnPointerClick(PointerEventData eventData) // Èçµã»÷ÔÚElevatorPanelÍâ£¬Ôò¹Ø±ÕElevatorOverlay
+        public void OnPointerClick(PointerEventData eventData) // å¦‚ç‚¹å‡»åœ¨ElevatorPanelå¤–ï¼Œåˆ™å…³é—­ElevatorOverlay
         {
             if (_elevatorPanel == null)
             {
-                Debug.LogWarning("[ElevatorOverlay] Î´°ó¶¨ ElevatorPanel");
+                Debug.LogWarning("[ElevatorOverlay] æœªç»‘å®š ElevatorPanel");
                 return;
             }
             bool isClickOutsidePanel = !RectTransformUtility.RectangleContainsScreenPoint(
@@ -104,15 +104,16 @@ namespace RounRounGrowth.UI
                 Hide();
         }
 
-        public void Show() // ´ò¿ªµçÌİ²Ëµ¥
+        public void Show() // æ‰“å¼€ç”µæ¢¯èœå•
         {
             gameObject.SetActive(true);
         }
 
-        public void Hide() // ¹Ø±ÕµçÌİ²Ëµ¥
+        public void Hide() // å…³é—­ç”µæ¢¯èœå•
         {
             gameObject.SetActive(false);
         }
     }
 }
+
 

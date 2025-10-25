@@ -1,4 +1,4 @@
-// MapInputBlocker.cs
+ï»¿// MapInputBlocker.cs
 
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -11,31 +11,31 @@ namespace RounRounGrowth.UI
 
         void Start()
         {
-            Debug.Log($"µ±Ç° dragThreshold = {EventSystem.current.pixelDragThreshold}");
+            Debug.Log($"å½“å‰ dragThreshold = {EventSystem.current.pixelDragThreshold}");
         }
 
         public void OnPointerClick(PointerEventData eventData)
         {
             if (eventData.dragging) return;
-            Debug.Log($"[CLICK] ½ÓÊÕµ½µã»÷ÊÂ¼ş - {eventData.pointerId}");
+            Debug.Log($"[CLICK] æ¥æ”¶åˆ°ç‚¹å‡»äº‹ä»¶ - {eventData.pointerId}");
         }
 
         public void OnBeginDrag(PointerEventData eventData)
         {
             
-            Debug.Log($"[DRAG-START] ¿ªÊ¼ÍÏ×§ - {eventData.pointerId}");
+            Debug.Log($"[DRAG-START] å¼€å§‹æ‹–æ‹½ - {eventData.pointerId}");
         }
 
         public void OnDrag(PointerEventData eventData)
         {
 
-            Debug.Log($"[DRAG] ÍÏ×§ÖĞ - {eventData.delta}");
+            Debug.Log($"[DRAG] æ‹–æ‹½ä¸­ - {eventData.delta}");
         }
 
         public void OnEndDrag(PointerEventData eventData)
         {
 
-            Debug.Log($"[DRAG-END] ½áÊøÍÏ×§ - {eventData.pointerId}");
+            Debug.Log($"[DRAG-END] ç»“æŸæ‹–æ‹½ - {eventData.pointerId}");
         }
 
         public void SetActive(bool state)
@@ -45,4 +45,5 @@ namespace RounRounGrowth.UI
         }
     }
 }
+
 

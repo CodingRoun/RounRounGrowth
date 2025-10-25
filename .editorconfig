@@ -1,0 +1,11 @@
+# EditorConfig 用于统一编码、缩进、换行等代码规范
+
+root = true
+
+[*]
+charset = utf-8-bom         # 统一保存为 UTF-8 with BOM，避免中文乱码
+indent_style = space        # 使用空格缩进
+indent_size = 4             # 每层缩进4个空格
+end_of_line = lf            # 统一换行符
+insert_final_newline = true # 文件末尾自动补换行
+trim_trailing_whitespace = true

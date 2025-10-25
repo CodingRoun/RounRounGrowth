@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using RounRounGrowth.Building;
 using RounRounGrowth.Core;
 
@@ -19,3 +19,4 @@ public class NavigatorTester : MonoBehaviour
             navigator.Show(FloorId.F3, RoomId.Gacha);
     }
 }
+

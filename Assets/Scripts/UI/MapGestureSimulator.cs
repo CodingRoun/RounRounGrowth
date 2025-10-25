@@ -1,4 +1,4 @@
-//MapGestureSimulator.cs
+ï»¿//MapGestureSimulator.cs
 
 using UnityEngine;
 using RounRounGrowth.Building;
@@ -16,9 +16,10 @@ namespace RounRounGrowth.UI
                 if (!navigator.IsMapOpen)
                     navigator.OpenMap();
                 else
-                    Debug.Log("MapÒÑ´ò¿ª£¬ÖØ¸´ÄóºÏÎŞĞ§");
+                    Debug.Log("Mapå·²æ‰“å¼€ï¼Œé‡å¤æåˆæ— æ•ˆ");
             }
         }
     }
 }
+
 

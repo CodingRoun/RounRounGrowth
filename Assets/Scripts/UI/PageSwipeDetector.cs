@@ -1,4 +1,4 @@
-// PageSwipeDetector.cs
+ï»¿// PageSwipeDetector.cs
 
 using UnityEngine;
 using UnityEngine.EventSystems;
@@ -21,11 +21,12 @@ namespace RounRounGrowth.UI
             Vector2 endPos = eventData.position; 
             float deltaX = endPos.x - _startPos.x;
             if (Mathf.Abs(deltaX) < SwipeThreshold)
-                return; // ºöÂÔ¶Ì»¬¶¯
+                return; // å¿½ç•¥çŸ­æ»‘åŠ¨
             int dir = deltaX > 0 ? -1 : 1;
             Debug.Log($"Swipe {(dir > 0 ? "Prev" : "Next")}");
             OnSwipe?.Invoke(dir);
         }
     }
 }
+
 

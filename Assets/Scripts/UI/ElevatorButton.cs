@@ -1,4 +1,4 @@
-//ElevatorButton.cs
+﻿//ElevatorButton.cs
 
 using UnityEngine;
 
@@ -12,7 +12,7 @@ namespace RounRounGrowth.UI
         {
             if (_elevatorOverlay == null)
             {
-                Debug.LogWarning("[ElevatorButton] δ��ElevatorOverlay");
+                Debug.LogWarning("[ElevatorButton] 未绑定ElevatorOverlay");
                 return;
             }
             
@@ -29,4 +29,5 @@ namespace RounRounGrowth.UI
         }
     }
 }
+
 

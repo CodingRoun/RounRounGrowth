@@ -1,4 +1,4 @@
-// TopNavBar.cs
+ï»¿// TopNavBar.cs
 
 using UnityEngine;
 using RounRounGrowth.Core;
@@ -20,30 +20,30 @@ namespace RounRounGrowth.UI
         {
             if (_navigator == null)
             {
-                Debug.LogWarning("[TopNavBar] Î´°ó¶¨ BuildingNavigator");
+                Debug.LogWarning("[TopNavBar] æœªç»‘å®š BuildingNavigator");
                 return;
             }
             _navigator.OnRoomChanged += HandleRoomChanged;
-            Debug.Log("[TopNavBar] ÊÂ¼şÒÑ×¢²á");
+            Debug.Log("[TopNavBar] äº‹ä»¶å·²æ³¨å†Œ");
         }
 
         private void OnDisable()
         {
             if (_navigator == null)
             {
-                Debug.LogWarning("[TopNavBar] Î´°ó¶¨ BuildingNavigator");
+                Debug.LogWarning("[TopNavBar] æœªç»‘å®š BuildingNavigator");
                 return;
             }
             _navigator.OnRoomChanged -= HandleRoomChanged;
-            Debug.Log("[TopNavBar] ÊÂ¼şÒÑ×¢Ïú");
+            Debug.Log("[TopNavBar] äº‹ä»¶å·²æ³¨é”€");
         }
 
         private void HandleRoomChanged(CurrentLocation currentLocation)
         {
-            HighlightCurrentRoom(currentLocation.Room); // Í¬Â¥²ãÊ±£¬¸üĞÂ¸ßÁÁ
-            if (_lastFloor == currentLocation.Floor && _hasGenerated == true) // Èç¹ûÔÚÍ¬Â¥²ãÇÒ´ËÇ°ÒÑÉú³É°´Å¥£¬Ôò²»ÖØĞÂÉú³É°´Å¥
+            HighlightCurrentRoom(currentLocation.Room); // åŒæ¥¼å±‚æ—¶ï¼Œæ›´æ–°é«˜äº®
+            if (_lastFloor == currentLocation.Floor && _hasGenerated == true) // å¦‚æœåœ¨åŒæ¥¼å±‚ä¸”æ­¤å‰å·²ç”ŸæˆæŒ‰é’®ï¼Œåˆ™ä¸é‡æ–°ç”ŸæˆæŒ‰é’®
                 return;
-            _lastFloor = currentLocation.Floor; // Èç¹ûÂ¥²ã±ä»¯£¬ÔòÖØĞÂÉú³É¶ÔÓ¦Â¥²ãµÄ°´Å¥£¬²¢¸ßÁÁµ±Ç°·¿¼ä
+            _lastFloor = currentLocation.Floor; // å¦‚æœæ¥¼å±‚å˜åŒ–ï¼Œåˆ™é‡æ–°ç”Ÿæˆå¯¹åº”æ¥¼å±‚çš„æŒ‰é’®ï¼Œå¹¶é«˜äº®å½“å‰æˆ¿é—´
             GenerateButtons(currentLocation.Floor);
             HighlightCurrentRoom(currentLocation.Room);
             _hasGenerated = true;
@@ -52,8 +52,8 @@ namespace RounRounGrowth.UI
         public void GenerateButtons(FloorId floor) 
         {
             foreach (Transform child in _container)
-                Destroy(child.gameObject); // Çå³ıËùÓĞµ¼º½À¸ÄÚµÄ°´Å¥
-            var rooms = BuildingNavigationTable.GetRooms(floor); //»ñµÃÍ¬²ãËùÓĞ·¿¼äIReadOnlyList<RoomId>
+                Destroy(child.gameObject); // æ¸…é™¤æ‰€æœ‰å¯¼èˆªæ å†…çš„æŒ‰é’®
+            var rooms = BuildingNavigationTable.GetRooms(floor); //è·å¾—åŒå±‚æ‰€æœ‰æˆ¿é—´IReadOnlyList<RoomId>
             foreach (var room in rooms)
             {
                 var button = Instantiate(_buttonPrefab, _container); 
@@ -72,3 +72,4 @@ namespace RounRounGrowth.UI
         }
     }
 }
+

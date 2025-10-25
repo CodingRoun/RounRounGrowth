@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEditor;
 
 public class ApplyAnchorsFromRect : EditorWindow
@@ -36,6 +36,7 @@ public class ApplyAnchorsFromRect : EditorWindow
 
         }
 
-        Debug.Log($" ÒÑ½« {Selection.gameObjects.Length} ¸öÎïÌåÍê³É±ä»»¡£");
+        Debug.Log($" å·²å°† {Selection.gameObjects.Length} ä¸ªç‰©ä½“å®Œæˆå˜æ¢ã€‚");
     }
 }
+
