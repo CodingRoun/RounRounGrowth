@@ -1349,6 +1349,7 @@ GameObject:
   - component: {fileID: 367652067}
   - component: {fileID: 367652066}
   - component: {fileID: 367652065}
+  - component: {fileID: 367652068}
   m_Layer: 5
   m_Name: F4Button
   m_TagString: Untagged
@@ -1458,6 +1459,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 367652063}
   m_CullTransparentMesh: 1
+--- !u!114 &367652068
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 367652063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf2777b4c0b6be046ba79e4a87f4dd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _floorId: 3
+  _navigator: {fileID: 1794630927}
+  _elevatorOverlay: {fileID: 441911249}
+  _background: {fileID: 367652066}
 --- !u!1 &376185880
 GameObject:
   m_ObjectHideFlags: 0
@@ -2232,16 +2249,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _elevatorPanel: {fileID: 1763644476}
   _navigator: {fileID: 1794630927}
-  _floorButtonRefs:
-  - Floor: 0
-    Button: {fileID: 1371975026}
-  - Floor: 1
-    Button: {fileID: 621404822}
-  - Floor: 2
-    Button: {fileID: 2098258198}
-  - Floor: 3
-    Button: {fileID: 367652065}
   _mapOverlay: {fileID: 998601659}
+  _floorButtons:
+  - {fileID: 1371975029}
+  - {fileID: 621404825}
+  - {fileID: 2098258201}
+  - {fileID: 367652068}
 --- !u!222 &441911251
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -3253,6 +3266,7 @@ GameObject:
   - component: {fileID: 621404824}
   - component: {fileID: 621404823}
   - component: {fileID: 621404822}
+  - component: {fileID: 621404825}
   m_Layer: 5
   m_Name: F2Button
   m_TagString: Untagged
@@ -3362,6 +3376,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 621404820}
   m_CullTransparentMesh: 1
+--- !u!114 &621404825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 621404820}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf2777b4c0b6be046ba79e4a87f4dd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _floorId: 1
+  _navigator: {fileID: 1794630927}
+  _elevatorOverlay: {fileID: 441911249}
+  _background: {fileID: 621404823}
 --- !u!1 &635645541
 GameObject:
   m_ObjectHideFlags: 0
@@ -5629,6 +5659,7 @@ GameObject:
   - component: {fileID: 1371975028}
   - component: {fileID: 1371975027}
   - component: {fileID: 1371975026}
+  - component: {fileID: 1371975029}
   m_Layer: 5
   m_Name: F1Button
   m_TagString: Untagged
@@ -5738,6 +5769,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1371975024}
   m_CullTransparentMesh: 1
+--- !u!114 &1371975029
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1371975024}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf2777b4c0b6be046ba79e4a87f4dd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _floorId: 0
+  _navigator: {fileID: 1794630927}
+  _elevatorOverlay: {fileID: 441911249}
+  _background: {fileID: 1371975027}
 --- !u!1 &1399822703
 GameObject:
   m_ObjectHideFlags: 0
@@ -7683,6 +7730,7 @@ GameObject:
   - component: {fileID: 2098258200}
   - component: {fileID: 2098258199}
   - component: {fileID: 2098258198}
+  - component: {fileID: 2098258201}
   m_Layer: 5
   m_Name: F3Button
   m_TagString: Untagged
@@ -7792,6 +7840,22 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2098258196}
   m_CullTransparentMesh: 1
+--- !u!114 &2098258201
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2098258196}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf2777b4c0b6be046ba79e4a87f4dd1c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _floorId: 2
+  _navigator: {fileID: 1794630927}
+  _elevatorOverlay: {fileID: 441911249}
+  _background: {fileID: 2098258199}
 --- !u!1 &2124356347
 GameObject:
   m_ObjectHideFlags: 0
