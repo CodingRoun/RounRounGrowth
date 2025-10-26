@@ -4,7 +4,7 @@
 ![Unity](https://img.shields.io/badge/Engine-Unity%206.0%20(6000.0.49f1)-blue)
 ![.NET](https://img.shields.io/badge/.NET-Standard%202.1-512BD4)
 ![C#](https://img.shields.io/badge/Language-C%23-178600)
-![Progress](https://img.shields.io/badge/Phase-M0%20导航系统基础-yellow)
+![Progress](https://img.shields.io/badge/Phase-M1%20功能模块实现-brightgreen)
 ![License](https://img.shields.io/badge/License-MIT-green)
 
 ---
@@ -21,7 +21,12 @@
 
 ---
 
-## 🧭 当前阶段：M0 导航系统基础
+## 🧭 当前阶段：M1 功能模块实现
+> 🚀 **目标：为各功能房间建立可运行逻辑。**
+
+---
+
+## 🧭 已完成：M0 导航系统基础
 
 > ✅ **目标：完成房间与楼层的导航闭环。**
 
@@ -31,8 +36,8 @@
 - [x] 房间导航系统（`BuildingNavigator`）  
 - [x] Map 手势与房间选择（`MapGestureSimulator` + `MapRoomButton`）  
 - [x] 同层左右滑（`PageSwipeDetector` + `SwipeToNavigate`）  
-- [x] 顶部导航条点击跳转（`TopNavBar`）  
-- [ ] 楼层电梯面板（`Elevator Selector`）  
+- [x] 顶部导航条点击跳转（`TopNavBar` + `TopNavButton`）  
+- [x] 楼层电梯面板（`ElevatorOverlay` + `ElevatorButton` + `ElevatorFloorButton`）  
 
 ---
 
@@ -92,10 +97,10 @@ RounRounGrowth/
 ```bash
 feat: [M0-5] 实现 SwipeToNavigate 页面切换（番茄#6）
 
-代码：
-- 将 PageSwipeDetector 的 OnSwipe 事件与导航器绑定；
-- 实现左右滑动页面切换；
-- 支持边界 return。
+Code:
+- 将 PageSwipeDetector 的 OnSwipe 事件与导航器绑定
+- 实现左右滑动页面切换
+- 支持边界 return
 ```
 
 ---
@@ -104,8 +109,8 @@ feat: [M0-5] 实现 SwipeToNavigate 页面切换（番茄#6）
 
 | 阶段 | 内容 | 状态 |
 |------|------|------|
-| M0 | 导航系统基础 | 🚧 进行中 |
-| M1 | 功能模块实现（大厅、心情、计划、抽卡、专注） | ⏳ 规划中 |
+| M0 | 导航系统基础 | ✅ 已完成 |
+| M1 | 功能模块实现（大厅、心情、计划、抽卡、专注） | 🚀 进行中 |
 | M2 | 数据与存档系统 | 🔜 |
 | M3 | 交互与视觉优化 | 🔜 |
 | M4 | 延后内容（业绩系统、卫生间、老板办公室） | 🔒 |
