@@ -13,19 +13,17 @@ namespace RounRounGrowth.UI
         [SerializeField] private ElevatorFloorButton[] _floorButtons;
         private bool _wasMapOpen;
 
-        private void Awake()
+        private void Awake() //场景加载时关闭ElevatorOverlay
         {
             gameObject.SetActive(false);
         }
 
-        private void OnEnable() // 初始化按钮
+        private void OnEnable() // 打开电梯面板时高亮当前楼层
         {
-            foreach (var button in _floorButtons)
-                button.Initialize();
             SetButtonHighlight();
         }
 
-        private void Update()
+        private void Update() // 打开地图时关闭ElevatorOverlay，每帧检测
         {
             if (_mapOverlay == null)
             {
@@ -41,8 +39,6 @@ namespace RounRounGrowth.UI
             _wasMapOpen = isMapOpen;
                 
         }
-
-        
 
         public void OnPointerClick(PointerEventData eventData) // 如点击在ElevatorPanel外，则关闭ElevatorOverlay
         {
@@ -70,7 +66,7 @@ namespace RounRounGrowth.UI
             gameObject.SetActive(false);
         }
 
-        private void SetButtonHighlight()
+        private void SetButtonHighlight() // 高亮按钮
         {
             foreach (var button in _floorButtons)
             {

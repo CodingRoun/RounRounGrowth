@@ -13,11 +13,15 @@ namespace RounRounGrowth.UI
         [SerializeField] private BuildingNavigator _navigator;
         [SerializeField] private ElevatorOverlay _elevatorOverlay;
         [SerializeField] private Image _background;
+        private Button _button;
 
-        public void Initialize()
+        public void Awake()
         {
-            GetComponent<Button>().onClick.AddListener(OnClicked);
+            _button = GetComponent<Button>();
+            _button.onClick.RemoveListener(OnClicked);
+            _button.onClick.AddListener(OnClicked);
         }
+
         public void SetHighlight()
         {
             bool isCurrentFloor = _floorId == _navigator.Current.Floor;
