@@ -3,6 +3,7 @@
 using RounRounGrowth.Building;
 using UnityEngine;
 using UnityEngine.EventSystems;
+
 namespace RounRounGrowth.UI
 {
     public class ElevatorOverlay : MonoBehaviour, IPointerClickHandler
@@ -13,8 +14,17 @@ namespace RounRounGrowth.UI
         [SerializeField] private ElevatorFloorButton[] _floorButtons;
         private bool _wasMapOpen;
 
-        private void Awake() //场景加载时关闭ElevatorOverlay
+        private void Awake() 
         {
+            if (!ValidateBindings())
+            {
+#if UNITY_EDITOR
+                Debug.LogWarning($"[{nameof(ElevatorOverlay)}] 缺少引用，组件已禁用。");
+#endif
+                enabled = false;
+                return;
+            }
+            // 场景加载时默认关闭电梯面板
             gameObject.SetActive(false);
         }
 
@@ -25,28 +35,20 @@ namespace RounRounGrowth.UI
 
         private void Update() // 打开地图时关闭ElevatorOverlay，每帧检测
         {
-            if (_mapOverlay == null)
-            {
-                Debug.LogWarning("[ElevatorOverlay] 未绑定 MapOverlay");
-                return;
-            }
             bool isMapOpen = _mapOverlay.gameObject.activeSelf;
             if (isMapOpen && !_wasMapOpen)
             {
-                Debug.Log("[ElevatorOverlay] 检测到地图打开，关闭电梯面板");
+#if UNITY_EDITOR
+                Debug.Log($"[{nameof(_mapOverlay)}] 检测到地图打开，关闭电梯面板");
+#endif
                 Hide();
             }
             _wasMapOpen = isMapOpen;
-                
         }
 
         public void OnPointerClick(PointerEventData eventData) // 如点击在ElevatorPanel外，则关闭ElevatorOverlay
         {
-            if (_elevatorPanel == null)
-            {
-                Debug.LogWarning("[ElevatorOverlay] 未绑定 ElevatorPanel");
-                return;
-            }
+            if (!ValidateBindings()) return;
             bool isClickOutsidePanel = !RectTransformUtility.RectangleContainsScreenPoint(
                 _elevatorPanel,
                 eventData.position
@@ -72,6 +74,41 @@ namespace RounRounGrowth.UI
             {
                 button.SetHighlight();
             }
+        }
+        private bool ValidateBindings()
+        {
+            bool isValid = true;
+            string missing = "";
+
+            if (_elevatorPanel == null)
+            {
+                missing += $"{nameof(_elevatorPanel)}，";
+                isValid = false;
+            }
+
+            if (_navigator == null)
+            {
+                missing += $"{nameof(_navigator)}，";
+                isValid = false;
+            }
+
+            if (_mapOverlay == null)
+            {
+                missing += $"{nameof(_mapOverlay)}，";
+                isValid = false;
+            }
+
+            if (_floorButtons == null || _floorButtons.Length == 0)
+            {
+                missing += $"{nameof(_floorButtons)}，";
+                isValid = false;
+            }
+
+#if UNITY_EDITOR
+            if (!isValid)
+                Debug.LogWarning($"[{nameof(ElevatorOverlay)}] 缺少引用：{missing.TrimEnd('，')}");
+#endif
+            return isValid;
         }
     }
 }
