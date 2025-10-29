@@ -1,4 +1,4 @@
-// BuildingNavigationTable.cs
+﻿// BuildingNavigationTable.cs
 
 using System;
 using System.Collections.Generic;
@@ -32,7 +32,7 @@ namespace RounRounGrowth.Core
             return _defaultRoomId[floor];
         }
 
-        public static RoomId? GetNextRoomId(FloorId currentFloor, RoomId currentRoom, int dir)//dir���ڸı䷽��Ϊ+1��-1
+        public static RoomId? GetNextRoomId(FloorId currentFloor, RoomId currentRoom, int dir)//dir用于改变方向，为+1或-1
         {
             RoomId[] list = _roomOrder[currentFloor];
             int index = Array.IndexOf(list, currentRoom);

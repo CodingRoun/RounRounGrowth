@@ -1,4 +1,4 @@
-// BuildingNavigator.cs
+ï»¿// BuildingNavigator.cs
 
 using RounRounGrowth.Core;
 using System;
@@ -20,7 +20,7 @@ namespace RounRounGrowth.Building
         [SerializeField] private BuildingManager _manager;
         [SerializeField] private GameObject _mapPanel;
 
-        private bool _HasShown = false; // ¼ì²éStartÊÇ·ñÒÑ¾­Ö´ĞĞ¹ıShow
+        private bool _HasShown = false; // æ£€æŸ¥Startæ˜¯å¦å·²ç»æ‰§è¡Œè¿‡Show
         public bool IsMapOpen
             => _mapPanel != null && _mapPanel.activeSelf;
 
@@ -33,7 +33,7 @@ namespace RounRounGrowth.Building
         public void Show(FloorId floor, RoomId room)
         {
             if (_HasShown && Current.Floor == floor && Current.Room == room)
-                return; //·ÇÊ×Ö¡ÇÒÒÑÔÚÄ¿±ê·¿¼ä£¬Ö±½Ó·µ»Ø
+                return; //éé¦–å¸§ä¸”å·²åœ¨ç›®æ ‡æˆ¿é—´ï¼Œç›´æ¥è¿”å›
             _manager.DeactivateAll();
             _manager.ActivateTarget(floor, room);
             AfterSwitch(new CurrentLocation(floor, room));
@@ -46,21 +46,21 @@ namespace RounRounGrowth.Building
             OnRoomChanged?.Invoke(Current);
         }
 
-        // ´ò¿ªMap£º´ò¿ªMap¸Ç²ã£¬±£ÁôÔ­À´µÄRoomPanelÔÚ¸Ç²ãÏÂ
+        // æ‰“å¼€Mapï¼šæ‰“å¼€Mapç›–å±‚ï¼Œä¿ç•™åŸæ¥çš„RoomPanelåœ¨ç›–å±‚ä¸‹
         public void OpenMap()
         {
             if (IsMapOpen) return; 
             _mapPanel.SetActive(true);
         }
 
-        // ´ÓMap·µ»Øµ«ÊÇÎ´Ñ¡ÔñÈÎºÎ·¿¼ä£º¹Ø±Õ¸Ç²ã
+        // ä»Mapè¿”å›ä½†æ˜¯æœªé€‰æ‹©ä»»ä½•æˆ¿é—´ï¼šå…³é—­ç›–å±‚
         public void CancelMap()
         {
             if (!IsMapOpen) return;
             _mapPanel.SetActive(false);
         }
 
-        //ÔÚMapÖĞÑ¡ÔñÁË·¿¼ä£ºÇĞÒ³²¢¹Ø±ÕMap
+        //åœ¨Mapä¸­é€‰æ‹©äº†æˆ¿é—´ï¼šåˆ‡é¡µå¹¶å…³é—­Map
         public void ConfirmMap(FloorId floor, RoomId room)
         {
             if (!IsMapOpen) return;

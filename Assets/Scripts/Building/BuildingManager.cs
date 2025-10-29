@@ -1,4 +1,4 @@
-// BuildingManager.cs
+﻿// BuildingManager.cs
 
 using System.Collections.Generic;
 using UnityEngine;

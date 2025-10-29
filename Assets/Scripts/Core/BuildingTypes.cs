@@ -1,4 +1,4 @@
-// BuildingTypes.cs
+﻿// BuildingTypes.cs
 
 using System;
 

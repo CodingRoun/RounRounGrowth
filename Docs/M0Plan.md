@@ -48,28 +48,28 @@
 ### 任务目标
 
 - [x] M0-7-1 建立 ElevatorOverlay 基础框架  
-- 创建电梯面板 UI（含楼层按钮容器）  
-- 挂载空脚本，确保能在场景中显示/隐藏  
+    - 创建电梯面板 UI（含楼层按钮容器）  
+    - 挂载空脚本，确保能在场景中显示/隐藏  
 
 - [x] M0-7-2 实现显示与隐藏逻辑  
-- 点击电梯图标可展开或收起 ElevatorOverlay  
-- 点击面板外区域关闭电梯面板  
-- 面板初始为隐藏状态  
+    - 点击电梯图标可展开或收起 ElevatorOverlay  
+    - 点击面板外区域关闭电梯面板  
+    - 面板初始为隐藏状态  
 
 - [x] M0-7-3 实现高亮当前楼层按钮  
 
 - [x] M0-7-4 实现点击楼层切换逻辑  
-- 点击其他楼层调用 `BuildingNavigator.Show()` 切换到该层默认房间  
-- 点击当前楼层无反应  
+    - 点击其他楼层调用 `BuildingNavigator.Show()` 切换到该层默认房间  
+    - 点击当前楼层无反应  
 
 - [x] M0-7-5 加入关闭条件（外部与 Map 交互）  
-- 打开地图时自动关闭电梯面板  
+    - 打开地图时自动关闭电梯面板  
 
 - [x] M0-7-6 楼层电梯结构优化（Refactor）  
-- 将 ElevatorOverlay 中的按钮点击与高亮逻辑迁移至新组件 ElevatorFloorButton  
-- ElevatorOverlay 仅负责整体面板的开关与地图联动  
-- 每个 ElevatorFloorButton 自行处理点击事件与高亮更新  
-- 无新增动画与音效，专注结构解耦与可维护性  
+    - 将 ElevatorOverlay 中的按钮点击与高亮逻辑迁移至新组件 ElevatorFloorButton  
+    - ElevatorOverlay 仅负责整体面板的开关与地图联动  
+    - 每个 ElevatorFloorButton 自行处理点击事件与高亮更新  
+    - 无新增动画与音效，专注结构解耦与可维护性  
 
 ### 主要文件
 - ElevatorOverlay.cs  
