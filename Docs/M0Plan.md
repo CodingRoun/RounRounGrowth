@@ -1,7 +1,7 @@
-# RounRoun Growth — M0 阶段计划（导航系统基础）
+# RounRounGrowth — M0 阶段计划（导航系统基础）
 
 > 本文为 M0 阶段原计划文档（保留历史结构）  
-> 最新规范参见 [DocumentationGuidelines](Docs/DocumentationGuidelines.md)
+> 最新规范参见 [DocumentationGuidelines](/Docs/DocumentationGuidelines.md)
 
 ---
 
